@@ -1,0 +1,17 @@
+FC       = flang-new
+FCFLAGS  = -std=f2018 -O3
+FCFLAGS += -flang-exerimental-exec
+
+DOCONCURRENT_FLAG   =
+ARRAY_FLAG          =
+OPENMP_FLAG         = -fopenmp
+OPENACC_FLAG        = -fopenacc
+CUDA_FLAG           =
+SEQUENTIAL_FLAG     =
+
+ifeq ($(IMPLEMENTATION),CUDA)
+    $(error IMPLEMENTATION=$(IMPLEMENTATION) is not supported by this compiler.)
+endif
+ifeq ($(IMPLEMENTATION),CUDAKernels)
+    $(error IMPLEMENTATION=$(IMPLEMENTATION) is not supported by this compiler.)
+endif
